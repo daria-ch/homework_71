@@ -1,14 +1,11 @@
 import {
-    ADD_TO_MENU,
     DISHES_ERROR,
     DISHES_REQUEST,
-    DISHES_SUCCESS,
+    DISHES_SUCCESS, GET_DISHES_SUCCESS,
     INIT_MENU,
-    REMOVE_FROM_MENU
 } from "../actions/actionTypes";
 
 const initialState = {
-    dishes: [],
     menu: [],
     error: null,
     dish: '',
@@ -34,15 +31,12 @@ const dishesReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.error
             };
-        case ADD_TO_MENU:
+        case GET_DISHES_SUCCESS:
             return {
                 ...state,
+                loading: false,
+                menu: action.dishes
             };
-        case REMOVE_FROM_MENU:
-            if (state.dishes[action.dish] === 0) {
-                return state;
-            }
-            return {};
         case INIT_MENU:
             return {
                 ...state,

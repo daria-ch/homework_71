@@ -1,14 +1,19 @@
-import {DISHES_ERROR, DISHES_REQUEST, DISHES_SUCCESS, ADD_TO_MENU, INIT_MENU, REMOVE_FROM_MENU} from "./actionTypes";
+import {
+    DISHES_ERROR,
+    DISHES_REQUEST,
+    DISHES_SUCCESS,
+    INIT_MENU,
+    GET_DISHES_SUCCESS
+} from "./actionTypes";
 import axiosOrders from "../../axios-orders";
 
 export const dishesRequest = () => ({type: DISHES_REQUEST});
 export const dishesSuccess = () => ({type: DISHES_SUCCESS});
 export const dishesError = error => ({type: DISHES_ERROR, error});
 
-export const addToMenu = (dish) => ({type: ADD_TO_MENU, dish});
-export const removeFromMenu = (dish) => ({type: REMOVE_FROM_MENU, dish});
-export const initMenu = () => ({type: INIT_MENU});
+export const getDishesSuccess = (dishes) => ({type: GET_DISHES_SUCCESS, dishes});
 
+export const initMenu = () => ({type: INIT_MENU});
 
 export const addDish = dish => {
     return async dispatch => {
@@ -22,6 +27,9 @@ export const addDish = dish => {
     }
 };
 
+export const removeFromMenu = dish => {
+
+};
 
 export const getDishes = () => {
     return async dispatch => {
@@ -31,10 +39,9 @@ export const getDishes = () => {
             const dishes = Object.keys(response.data).map(id => {
                 return {...response.data[id]}
             });
-            dispatch(dishesSuccess(dishes));
+            dispatch(getDishesSuccess(dishes));
         } catch (e) {
             dishesError(e);
         }
     }
 };
-

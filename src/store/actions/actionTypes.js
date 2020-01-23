@@ -2,8 +2,8 @@ export const DISHES_REQUEST = 'DISHES_REQUEST';
 export const DISHES_SUCCESS = 'DISHES_SUCCESS';
 export const DISHES_ERROR = 'DISHES_ERROR';
 
-export const ADD_TO_MENU = 'ADD_TO_MENU';
-export const REMOVE_FROM_MENU = 'REMOVE_FROM_MENU';
+export const GET_DISHES_SUCCESS = 'GET_DISHES_SUCCESS';
+
 export const INIT_MENU = 'INIT_MENU';
 
 export const ORDER_REQUEST = 'ORDER_REQUEST';
