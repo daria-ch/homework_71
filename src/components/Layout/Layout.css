@@ -1,3 +1,4 @@
 .Layout-Content {
-    margin-top: 72px;
+    max-width: 1000px;
+    margin: 72px auto 0 auto;
 }

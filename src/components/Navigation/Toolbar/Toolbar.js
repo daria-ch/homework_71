@@ -1,12 +1,11 @@
 import React from 'react';
 import './Toolbar.css';
-import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationItems";
 
 const Toolbar = () => (
     <header className='Toolbar'>
-        <div className='Toolbar-logo'>
-            <Logo/>
+        <div className='Toolbar-text'>
+            Turtle pizza admin
         </div>
         <nav>
             <NavigationItems/>
