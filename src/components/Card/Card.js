@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 import Button from "../UI/Button/Button";
 import './Card.css';
 
@@ -11,7 +12,7 @@ const Card = props => {
                 <span>{props.title}</span>
                 <span><b>{props.price} KGS</b></span>
             </div>
-            <Button onClick={props.editDish}>Edit</Button>
+            <NavLink className='edit-button' to={'/dish/' + props.id + '/edit'}>Edit</NavLink>
             <Button onClick={props.deleteDish}>Delete</Button>
         </div>
     );

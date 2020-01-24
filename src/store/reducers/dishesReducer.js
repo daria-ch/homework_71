@@ -1,14 +1,12 @@
 import {
     DISHES_ERROR,
     DISHES_REQUEST,
-    DISHES_SUCCESS, GET_DISHES_SUCCESS,
-    INIT_MENU,
+    DISHES_SUCCESS, GET_DISHES_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
     menu: [],
     error: null,
-    dish: '',
     loading: false,
 };
 
@@ -37,12 +35,6 @@ const dishesReducer = (state = initialState, action) => {
                 loading: false,
                 menu: action.dishes
             };
-        case INIT_MENU:
-            return {
-                ...state,
-                menu: state.menu
-            };
-
         default:
             return state;
     }

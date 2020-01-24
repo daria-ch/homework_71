@@ -50,7 +50,6 @@ class Dish extends Component {
                     <Button>ADD</Button>
                 </form>
             </Fragment>
-
         );
     }
 }

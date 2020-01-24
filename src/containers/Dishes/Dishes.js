@@ -17,20 +17,15 @@ class Dishes extends Component {
         this.props.history.push('/dish');
     };
 
-    editButtonHandler = () => {
-        this.props.history.push('/edit-dish');
-    };
-
-
     render() {
-        let menu = this.props.menu.map(dish => {
+        let menu = Object.keys(this.props.menu).map(dish => {
             return <Card
-                key={dish.title}
-                title={dish.title}
-                image={dish.image}
-                price={dish.price}
-                editDish={this.editButtonHandler}
-                // deleteDish={}
+                key={dish}
+                title={this.props.menu[dish].title}
+                image={this.props.menu[dish].image}
+                price={this.props.menu[dish].price}
+                id={dish}
+                deleteDish={() => this.props.removeFromMenu(dish)}
             />
         });
 
