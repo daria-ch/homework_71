@@ -1,7 +1,7 @@
 import {
     ORDERS_ERROR,
     ORDERS_REQUEST,
-    ORDERS_SUCCESS, GET_ORDERS_SUCCESS
+    GET_ORDERS_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -16,12 +16,6 @@ const dishesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true
-            };
-        case ORDERS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                error: null
             };
         case ORDERS_ERROR:
             return {

@@ -4,6 +4,7 @@ import {getOrders, removeOrder} from "../../store/actions/ordersActions";
 import {getDishes} from "../../store/actions/dishesActions";
 import Order from "../../components/Order/Order";
 import './Orders.css';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 
 class Orders extends Component {
@@ -47,6 +48,10 @@ class Orders extends Component {
                 </div>
             )
         );
+
+        if (this.props.loading) {
+            orders = <Spinner/>
+        }
 
         return (
             <Fragment>
