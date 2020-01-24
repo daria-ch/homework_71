@@ -5,6 +5,7 @@ import {getDishes} from "../../store/actions/dishesActions";
 import Order from "../../components/Order/Order";
 import './Orders.css';
 
+
 class Orders extends Component {
 
     componentDidMount() {
@@ -13,43 +14,39 @@ class Orders extends Component {
     }
 
     render() {
-        const prices = [];
         let orders = Object.keys(this.props.orders).map(order => (
-            <div key={order} className='order'>
-                <div>
-                    {Object.keys(this.props.orders[order]).map(item => {
-                        const result = Object.keys(this.props.menu).find(dish => dish === item);
-                        if (result) {
-                            let title = this.props.menu[result].title;
-                            let price = this.props.menu[result].price;
-                            return <Order
-                                key={item}
-                                title={title}
-                                count={this.props.orders[order][item]}
-                                price={price}
-                            />
-                        }
-                    })}
-                    <p className='delivery'>Delivery: 150 KGS</p>
-                </div>
-                <div className='order-info'>
-                    <span className='total'>Order total:
-                        {Object.keys(this.props.orders[order]).map(ord => {
-                            const result = Object.keys(this.props.menu).find(dish => dish === ord);
+                <div key={order} className='order'>
+                    <div>
+                        {Object.keys(this.props.orders[order]).map(item => {
+                            const result = Object.keys(this.props.menu).find(dish => dish === item);
                             if (result) {
-                                prices.push(this.props.menu[result].price * this.props.orders[order][ord]);
-                                console.log(prices);
-                                const total = prices.reduce((sum, amount) => sum + amount);
-                                console.log(total);
+                                let title = this.props.menu[result].title;
+                                let price = this.props.menu[result].price;
+                                return <Order
+                                    key={item}
+                                    title={title}
+                                    count={this.props.orders[order][item]}
+                                    price={price}
+                                />
                             }
                         })}
-                    </span>
-                    <span> {} KGS</span>
-                    <button className='order-button' onClick={() => this.props.removeOrder(order)}>Complete order
-                    </button>
+                        <p className='delivery'>Delivery: 150 KGS</p>
+                    </div>
+                    <div className='order-info'>
+                        <span className='total'>Order total: </span>
+                        <span>{Object.keys(this.props.orders[order]).map(ord => {
+                            const result = Object.keys(this.props.menu).find(dish => dish === ord);
+                            if (result) {
+                                const dishPrice = this.props.menu[result].price * this.props.orders[order][ord];
+                                return dishPrice;
+                            }
+                        }).reduce((sum, amount) => (sum + amount), 0) + 150} KGS</span>
+                        <button className='order-button' onClick={() => this.props.removeOrder(order)}>Complete order
+                        </button>
+                    </div>
                 </div>
-            </div>
-        ));
+            )
+        );
 
         return (
             <Fragment>
